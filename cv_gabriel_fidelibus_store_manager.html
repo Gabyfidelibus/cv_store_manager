@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Gabriel Fidelibus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: white;
+            font-size: 12px;
+        }
+        
+        .cv-container {
+            width: 210mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .icon {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+        
+        .profile-section {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 25px 30px;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .profile-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .profile-photo-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .profile-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .profile-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-text {
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .main-content {
+            display: flex;
+            min-height: calc(100vh - 150px);
+        }
+        
+        .left-column {
+            width: 33.33%;
+            background: #f8f9fa;
+            padding: 25px 20px;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .right-column {
+            width: 66.67%;
+            padding: 25px 30px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2, .profile-content h2 {
+            color: #667eea;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e1e8f0;
+            position: relative;
+        }
+        
+        .section h2::after, .profile-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 1px;
+        }
+        
+        .experience-item {
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .company {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 13px;
+        }
+        
+        .date {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .responsibilities {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .responsibilities li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 12px;
+        }
+        
+        .responsibilities li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #667eea;
+            font-size: 10px;
+        }
+        
+        .left-section {
+            margin-bottom: 20px;
+        }
+        
+        .left-section h3 {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #3498db;
+        }
+        
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skill-list li {
+            background: white;
+            padding: 6px 10px;
+            margin-bottom: 4px;
+            border-radius: 15px;
+            font-size: 11px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-list li:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .education-item {
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .education-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .education-institution {
+            color: #667eea;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .education-date {
+            font-size: 10px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .additional-item {
+            background: white;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 15px;
+            font-size: 11px;
+            border-left: 3px solid #27ae60;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .additional-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .languages-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 6px 10px;
+            margin-bottom: 4px;
+            border-radius: 15px;
+            font-size: 11px;
+            border-left: 3px solid #e74c3c;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .languages-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .language-name {
+            font-weight: 500;
+        }
+        
+        .language-level {
+            color: #7f8c8d;
+            font-size: 10px;
+        }
+        
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+        }
+        
+        @media print {
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .download-btn {
+                display: none;
+            }
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadPDF()">📄 Descargar PDF</button>
+    
+    <div class="cv-container" id="cv-content">
+        <div class="header">
+            <h1>GABRIEL FIDELIBUS</h1>
+            <p class="subtitle">Store Manager | Retail</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    Retiro, Madrid
+                </div>
+                <div class="contact-item">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    600 29 05 33
+                </div>
+                <div class="contact-item">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    gabrielfidelibus@gmail.com
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-photo-container">
+                <img src="mifoto.jpeg" alt="Gabriel Fidelibus" class="profile-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="profile-photo-placeholder" style="display: none;">
+                    GF
+                </div>
+            </div>
+            <div class="profile-content">
+                <h2>Perfil Profesional</h2>
+                <div class="profile-text">
+                    Profesional del retail orientado a resultados con más de 3 años de experiencia en gestión de tiendas, equipos y operaciones comerciales. Especializado en la optimización de procesos y el análisis de ventas para impulsar el crecimiento. Mi experiencia como Responsable de Tienda me ha permitido desarrollar un fuerte liderazgo y habilidades para la formación y motivación de equipos, buscando unirme a un proyecto en expansión donde pueda aportar mi versatilidad y crecer profesionalmente.
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <div class="left-section">
+                    <h3>Habilidades y Competencias</h3>
+                    <ul class="skill-list">
+                        <li>Liderazgo y gestión de equipos</li>
+                        <li>Formación y motivación de personal</li>
+                        <li>Análisis de KPIs y ventas</li>
+                        <li>Orientación a resultados</li>
+                        <li>Control de stock e inventario</li>
+                        <li>Visual merchandising</li>
+                        <li>Atención al cliente</li>
+                        <li>Resolución de incidencias</li>
+                        <li>Comunicación efectiva</li>
+                        <li>Capacidad de organización</li>
+                    </ul>
+                </div>
+                
+                <div class="left-section">
+                    <h3>Idiomas</h3>
+                    <div class="languages-item">
+                        <span class="language-name">Español</span>
+                        <span class="language-level">Nativo</span>
+                    </div>
+                    <div class="languages-item">
+                        <span class="language-name">Inglés</span>
+                        <span class="language-level">B2 - Intermedio Alto</span>
+                    </div>
+                </div>
+                
+                <div class="left-section">
+                    <h3>Herramientas Informáticas</h3>
+                    <ul class="skill-list">
+                        <li>Microsoft Office (Avanzado)</li>
+                        <li>Excel avanzado</li>
+                        <li>Sistemas CRM (Experto)</li>
+                        <li>Gestión de TPV</li>
+                    </ul>
+                </div>
+                
+                <div class="left-section">
+                    <h3>Información Adicional</h3>
+                    <div class="additional-item">
+                        🚗 Carnet de conducir B
+                    </div>
+                    <div class="additional-item">
+                        ⚡ Disponibilidad completa e inmediata
+                    </div>
+                </div>
+                
+                <div class="left-section">
+                    <h3>Formación Académica</h3>
+                    <div class="education-item">
+                        <div class="education-title">Grado en Ingeniería Informática</div>
+                        <div class="education-institution">Universidad Nacional de Mar del Plata</div>
+                        <div class="education-date">2017 – 2022 (Iniciado)</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-title">Bachillerato Ciencias Sociales</div>
+                        <div class="education-institution">Instituto María Auxiliadora</div>
+                        <div class="education-date">2015 – 2017</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <h2>Experiencia Profesional</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Responsable de Tienda</div>
+                                <div class="company">Drugstore Argentina</div>
+                            </div>
+                            <div class="date">Marzo 2023 – Junio 2024</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li><strong>Gestión de Equipo:</strong> Lideré y supervisé a un equipo de 4 personas, encargándome de la organización de turnos, la formación continua en producto y técnicas de venta, y la evaluación del rendimiento para asegurar la consecución de objetivos.</li>
+                            <li><strong>Análisis Comercial:</strong> Realicé el seguimiento diario de ventas y KPIs (ticket medio, tasa de conversión). Elaboré informes de resultados y propuse acciones comerciales (promociones, visual merchandising) para mejorar el desempeño.</li>
+                            <li><strong>Gestión Operativa:</strong> Supervisé el control de stock, realicé pedidos a proveedores, gestioné la recepción de mercancía y organicé el inventario para minimizar las pérdidas y asegurar la disponibilidad de producto.</li>
+                            <li><strong>Coordinación y Estrategia:</strong> Actué como nexo principal con los responsables de la marca, asegurando la correcta implementación de las directrices y la alineación de la tienda con la estrategia global.</li>
+                            <li><strong>Atención al Cliente:</strong> Implementé protocolos para garantizar una experiencia de cliente excepcional, gestionando y resolviendo incidencias con eficacia para fomentar la fidelización.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Camarero</div>
+                                <div class="company">Toma Jamón</div>
+                            </div>
+                            <div class="date">Abril 2025 – Actualidad</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Desarrollo de habilidades de atención al cliente en un entorno de alta demanda, gestionando múltiples tareas simultáneamente y garantizando la satisfacción del cliente.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Administrativo</div>
+                                <div class="company">Insumape</div>
+                            </div>
+                            <div class="date">Enero 2021 – Marzo 2023</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li><strong>Organización y Planificación:</strong> Coordiné agendas, reuniones y capacitaciones para diferentes departamentos, optimizando la gestión del tiempo y los recursos internos.</li>
+                            <li><strong>Soporte Operativo:</strong> Gestioné la comunicación con proveedores, realicé el seguimiento de pedidos y facturas, y colaboré en la organización de la logística de la oficina.</li>
+                            <li><strong>Manejo de Datos:</strong> Utilicé CRM y Excel para el registro y seguimiento de datos de clientes y operaciones, generando informes básicos para la dirección.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Dependiente Especializado</div>
+                                <div class="company">Estanco</div>
+                            </div>
+                            <div class="date">Julio 2020 – Diciembre 2020</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li><strong>Venta Asesorada:</strong> Asesoré activamente a clientes sobre productos, identificando sus necesidades y recomendando las mejores soluciones, lo que impulsó las ventas en esta categoría.</li>
+                            <li><strong>Control de Stock:</strong> Fui responsable de la recepción de mercancía, el control de inventario y la correcta exposición del producto en tienda (visual merchandising).</li>
+                            <li><strong>Gestión de Caja:</strong> Manejo de TPV, cobros, arqueos y cierres de caja.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            // Usar el método nativo de impresión del navegador
+            // que funciona de manera más confiable y sin errores de seguridad
+            const originalTitle = document.title;
+            document.title = 'CV_Gabriel_Fidelibus';
+            
+            // Ocultar el botón de descarga antes de imprimir
+            const downloadBtn = document.querySelector('.download-btn');
+            downloadBtn.style.display = 'none';
+            
+            // Configurar para impresión en PDF
+            const style = document.createElement('style');
+            style.textContent = `
+                @page {
+                    size: A4;
+                    margin: 0;
+                }
+                body {
+                    -webkit-print-color-adjust: exact !important;
+                    color-adjust: exact !important;
+                }
+                .cv-container {
+                    box-shadow: none !important;
+                    margin: 0 !important;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Ejecutar la impresión
+            window.print();
+            
+            // Restaurar el estado original después de la impresión
+            setTimeout(() => {
+                downloadBtn.style.display = 'block';
+                document.title = originalTitle;
+                document.head.removeChild(style);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
